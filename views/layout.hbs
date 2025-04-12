@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Course Manager</title>
+  <link rel="stylesheet" href="/styles/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .nav-bar {
+      background-color: #343a40;
+      padding: 10px;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .nav-bar a {
+      color: white;
+      padding: 8px 12px;
+      text-decoration: none;
+    }
+
+    .nav-bar a:hover {
+      background-color: #495057;
+      border-radius: 4px;
+    }
+
+    .chart-container {
+      max-width: 400px;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div class="nav-bar">
+    <a href="/">Home</a>
+    {{#if user}}
+      <a href="/users/profile">Profile</a>
+      <a href="/users/notifications">View Notifications</a>
+      <a href="/logout">Logout</a>
+    {{else}}
+      <a href="/users/login">Login</a>
+      <a href="/users/register">Register</a>
+    {{/if}}
+  </div>
+
+  <!-- Page Content -->
+  <div class="container">
+    {{{body}}}
+  </div>
+
+  {{> footer}}
+</body>
+</html>

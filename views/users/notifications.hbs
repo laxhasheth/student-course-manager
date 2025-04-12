@@ -1,0 +1,21 @@
+{{> header}}
+
+<div class="container">
+  <h1>Your Notifications</h1>
+
+  <div style="margin-bottom: 20px;">
+    <a href="/users/profile" class="btn">Back to Profile</a>
+  </div>
+
+  {{#if notifications.length}}
+    <ul>
+      {{#each notifications}}
+        <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No notifications at the moment.</p>
+  {{/if}}
+</div>
+
+{{> footer}}

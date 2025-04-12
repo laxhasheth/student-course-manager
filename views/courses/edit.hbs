@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Course</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <h1>Edit Course</h1>
+
+  <form action="/courses/edit/{{course._id}}" method="POST">
+    <label for="title">Course Title:</label>
+    <input type="text" id="title" name="title" value="{{course.title}}" required>
+
+    <label for="code">Course Code:</label>
+    <input type="text" id="code" name="code" value="{{course.code}}" required>
+
+    <label for="description">Course Description:</label>
+    <textarea id="description" name="description" required>{{course.description}}</textarea>
+
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate" value="{{course.startDate}}" required>
+
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" name="endDate" value="{{course.endDate}}" required>
+
+    <button type="submit">Update Course</button>
+  </form>
+
+  <p><a href="/courses">Back to Courses</a></p>
+</body>
+</html>

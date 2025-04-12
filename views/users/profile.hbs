@@ -1,0 +1,53 @@
+{{> header}}
+
+<div class="container">
+  <h1>{{user.username}}'s Profile</h1>
+
+  <p><strong>Email:</strong> {{user.email}}</p>
+
+  <h2>Your Courses</h2>
+  {{#if user.courses.length}}
+    <ul>
+      {{#each user.courses}}
+        <li><strong>{{this.title}}</strong> - {{this.description}}</li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No courses enrolled yet.</p>
+  {{/if}}
+
+  <div style="margin-top: 30px;">
+    <a href="/users/notifications" class="btn">View Notifications</a>
+    <a href="/users/logout" class="btn" style="margin-left: 15px;">Logout</a>
+  </div>
+
+  <h2 style="margin-top: 40px;">Course Progress Overview</h2>
+  <div style="max-width: 500px; margin-top: 20px;">
+    <canvas id="courseChart"></canvas>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('courseChart').getContext('2d');
+  const chartData = {
+    labels: ['Completed', 'In Progress', 'Upcoming'],
+    datasets: [{
+      label: 'Course Progress',
+      data: [3, 4, 2], // Update with dynamic data if needed
+      backgroundColor: ['#28a745', '#ffc107', '#17a2b8'],
+      borderWidth: 1
+    }]
+  };
+
+  new Chart(ctx, {
+    type: 'pie',
+    data: chartData,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false
+    }
+  });
+</script>
+
+{{> footer}}
